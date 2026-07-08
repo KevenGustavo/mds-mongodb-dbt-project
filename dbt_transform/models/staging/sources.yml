@@ -1,0 +1,7 @@
+sources:
+  - name: bronze
+    description: "Camada de dados brutos extraídos diretamente do MongoDB via Airflow"
+    schema: bronze
+    tables:
+      - name: ecommerce_orders_raw
+        description: "Tabela contendo os documentos JSON originais com as vendas do e-commerce"
