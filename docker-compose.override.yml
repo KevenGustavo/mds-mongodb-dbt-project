@@ -1,0 +1,34 @@
+services:
+  # 1. PostgreSQL - DataWarehouse
+  postgres-dw:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+      - POSTGRES_DB=${PG_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_dw_data:/var/lib/postgresql/data
+      - ./scripts/init:/docker-entrypoint-initdb.d
+
+  # 2. MongoDB - A Origem dos Dados
+  mongo:
+    image: mongo:6.0
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  # 3. Metabase - Data Visualization
+  metabase:
+    image: metabase/metabase:latest
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres_dw_data:
+  mongo_data:
