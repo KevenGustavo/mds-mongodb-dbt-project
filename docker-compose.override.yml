@@ -2,26 +2,38 @@ services:
   # 1. PostgreSQL - Data Warehouse
   postgres-dw:
     image: postgres:15
+    restart: unless-stopped
     env_file: .env
     ports:
       - "5434:5432" 
     volumes:
       - postgres_dw_data:/var/lib/postgresql/data
+    networks:
+      - airflow
 
   # 2. MongoDB - A Origem dos Dados
   mongo:
     image: mongo:6.0
+    restart: unless-stopped
     env_file: .env
     ports:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+    networks:
+      - airflow
 
   # 3. Metabase - Data Visualization
   metabase:
     image: metabase/metabase:latest
+    restart: unless-stopped
     ports:
       - "3000:3000"
+    networks:
+      - airflow
+
+networks:
+  airflow:
 
 volumes:
   postgres_dw_data:
