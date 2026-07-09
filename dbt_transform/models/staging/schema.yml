@@ -1,0 +1,31 @@
+models:
+  - name: stage_ecommerce_orders
+    description: "Tabela Silver (Staging) contendo os dados limpos, deduplicados e achatados do MongoDB."
+    columns:
+      - name: order_item_id
+        description: "Surrogate Key única para cada item dentro de um pedido (transaction_id + sku)."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: transaction_id
+        description: "ID do pedido original. Pode se repetir se houver múltiplos itens no carrinho."
+        data_tests:
+          - not_null
+
+      - name: customer_id
+        description: "Identificador único do cliente."
+        data_tests:
+          - not_null
+
+      - name: payment_status
+        description: "Status financeiro do pagamento. Apenas transações válidas devem passar pela Staging."
+        data_tests:
+          - accepted_values:
+              arguments: 
+                values: ['COMPLETED', 'REFUNDED']
+
+      - name: unit_price
+        description: "Preço unitário do produto."
+        data_tests:
+          - not_null
