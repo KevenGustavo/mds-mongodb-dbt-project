@@ -37,12 +37,14 @@ flattened_json AS (
         document->'payment'->>'method' AS payment_method,
         document->'payment'->>'status' AS payment_status,
         
-        -- Expandindo o Array de Produtos (Unnest)
-        jsonb_array_elements(document->'cart') AS cart_item
-    FROM deduplicated  
+        arr.cart_item,
+        arr.item_index
+    FROM deduplicated d,
+    jsonb_array_elements(d.document->'cart') WITH ORDINALITY AS arr(cart_item, item_index) 
 )
 
 SELECT
+    MD5(transaction_id || '_' || item_index::TEXT) AS order_item_id,
     transaction_id,
     processed_at,
     customer_id,
