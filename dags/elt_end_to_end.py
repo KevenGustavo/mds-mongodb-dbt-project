@@ -44,7 +44,7 @@ profile_config = ProfileConfig(
     target_name="dev",
     profile_mapping=PostgresUserPasswordProfileMapping(
         conn_id="postgres_dw",
-        profile_args={"schema": "silver"}, # Esquema padrão do projeto
+        profile_args={"schema": "silver"},
     )
 )
 
