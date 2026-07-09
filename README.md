@@ -1,6 +1,35 @@
-# **E-Commerce Modern Data Stack (End-to-End)**
+<div align="center">
 
-Este repositório contém o desenvolvimento de um pipeline de dados analítico de ponta a ponta (End-to-End), simulando a infraestrutura de produção de um e-commerce de alto volume. O projeto aplica os conceitos mais modernos de Engenharia e Analytics Engineering (ELT), utilizando orquestração nativa, conteinerização e testes de qualidade de dados automatizados.
+  <h1>E-Commerce Modern Data Stack</h1>
+  <p><b>Pipeline Analítico End-to-End | Orchestration, Analytics Engineering & Business Intelligence</b></p>
+
+  <p>
+    <img src="https://img.shields.io/badge/Architecture-Modern_Data_Stack-blue?style=for-the-badge&logo=diagramsdotnet&logoColor=white" alt="MDS">
+    <img src="https://img.shields.io/badge/Orchestrator-Apache_Airflow-017CEE?style=for-the-badge&logo=apacheairflow&logoColor=white" alt="Airflow">
+    <img src="https://img.shields.io/badge/Transformation-dbt_Core-FF694B?style=for-the-badge&logo=dbt&logoColor=white" alt="dbt">
+    <img src="https://img.shields.io/badge/Data_Warehouse-PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
+    <img src="https://img.shields.io/badge/Source-MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
+    <img src="https://img.shields.io/badge/BI-Metabase-509EE3?style=for-the-badge&logo=metabase&logoColor=white" alt="Metabase">
+    <img src="https://img.shields.io/badge/Environment-Docker_%26_Astro_CLI-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+  </p>
+
+</div>
+
+---
+
+## Tech Stack & Arquitetura de Ferramentas
+
+| Categoria | Tecnologia | Função no Pipeline |
+| :--- | :--- | :--- |
+| **Linguagem Base** | ![Python](https://img.shields.io/badge/Python_3.11+-3776AB?style=flat-square&logo=python&logoColor=white) | Scripts de simulação backend, conectores `pymongo`/`psycopg2` e TaskFlow API |
+| **Banco Transacional (Source)** | ![MongoDB](https://img.shields.io/badge/MongoDB_6.0-47A248?style=flat-square&logo=mongodb&logoColor=white) | Armazenamento NoSQL de documentos transacionais JSON aninhados |
+| **Orquestração & Pipeline** | ![Apache Airflow](https://img.shields.io/badge/Apache_Airflow_2.x-017CEE?style=flat-square&logo=apacheairflow&logoColor=white) ![Astronomer Cosmos](https://img.shields.io/badge/Astronomer_Cosmos-2496ED?style=flat-square) | Ingestão atômica na camada Bronze e tradução dos modelos dbt em TaskGroups visuais |
+| **Data Warehouse** | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL_15-4169E1?style=flat-square&logo=postgresql&logoColor=white) | Data Warehouse relacional estruturado na Arquitetura Medallion (`bronze`, `silver`, `gold`) |
+| **Analytics Engineering** | ![dbt Core](https://img.shields.io/badge/dbt_Core_1.11+-FF694B?style=flat-square&logo=dbt&logoColor=white) | Flattening de JSONs, limpeza de dados, geração de *Surrogate Keys* e testes de qualidade (`schema.yml`) |
+| **Data Visualization & BI** | ![Metabase](https://img.shields.io/badge/Metabase-509EE3?style=flat-square&logo=metabase&logoColor=white) | Camada de consumo com dashboards analíticos, filtros dinâmicos e métricas de receita |
+| **Infraestrutura & IaC** | ![Docker](https://img.shields.io/badge/Docker_%26_Docker_Compose-2496ED?style=flat-square&logo=docker&logoColor=white) ![Astro CLI](https://img.shields.io/badge/Astro_CLI-017CEE?style=flat-square) | Conteinerização completa, isolamento de dependências e ambiente reprodutível |
+
+---
 
 ## **Objetivo do Projeto**
 
