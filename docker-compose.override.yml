@@ -32,6 +32,22 @@ services:
     networks:
       - airflow
 
+  # 4. Mongo Database Seeder
+  mongo-seeder:
+    image: python:3.11-slim
+    container_name: mds-mongo-seeder
+    depends_on:
+      - mongo  
+    env_file:
+      - .env
+    volumes:
+      - ./scripts:/app/scripts
+      - ./requirements.txt:/app/requirements.txt
+    networks:
+      - airflow
+    working_dir: /app
+    command: bash -c "pip install pymongo python-dotenv && python scripts/seed_mongo.py"
+
 networks:
   airflow:
 
