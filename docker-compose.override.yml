@@ -42,7 +42,6 @@ services:
       - .env
     volumes:
       - ./scripts:/app/scripts
-      - ./requirements.txt:/app/requirements.txt
     networks:
       - airflow
     working_dir: /app
